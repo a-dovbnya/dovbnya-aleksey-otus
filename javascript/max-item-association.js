@@ -5,17 +5,17 @@ function maxItemAssociation (purchases) {
 
     purchases.forEach((group, index) => {
 
-        group.forEach((el) => {
-            for (let i = 0; i < purchases.length; i++) {
-                if (index !== i && purchases[i].includes(el)) {
-                    const list = [...group, ...purchases[i].filter(el => !group.includes(el))].sort()
+        group.forEach(() => {
+            const list = [...group]
 
-                    if (list.length > result.length) {
-                        result = list
-                    } else if (!result.length) {
-                        result = group
-                    }
+            for (let i = 0; i < purchases.length; i++) {
+                if (index !== i && purchases[i].some(purchase => list.includes(purchase))) {
+                    list.push(...purchases[i].filter(purchase => !list.includes(purchase)))
                 }
+            }
+
+            if (list.length > result.length) {
+                result = [...list].sort()
             }
         })
     })
@@ -24,5 +24,13 @@ function maxItemAssociation (purchases) {
 }
 
 // test
-const purchasesHistory = [["a", "b"], ["a", "c"], ["d", "e"]]
-console.log(maxItemAssociation(purchasesHistory))
+const purchasesHistory_1 = [["a", "b"], ["a", "c"], ["d", "e"]]
+const purchasesHistory_2 = [
+    ['d', 'e'],
+    ['e', 'n'],
+    ['a', 'b'],
+    ['a', 'c'],
+    ['c', 'q']
+]
+console.log(maxItemAssociation(purchasesHistory_1)) // [ 'a', 'b', 'c' ]
+console.log(maxItemAssociation(purchasesHistory_2)) // [ 'a', 'b', 'c', 'q' ]
