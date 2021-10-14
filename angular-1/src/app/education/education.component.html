@@ -1,0 +1,33 @@
+<div *ngIf="!isStartedEducation && !isDone; else education" class="start-education">
+    <button class="start-btn" (click)="startEducation()">Начать тренировку</button>
+</div>
+<ng-template #education>
+    <div *ngIf="currentWord.word && !isDone" class="education">
+        <div class="education__panel">
+            <div class="education__word">
+                {{ currentWord.word }}
+            </div>
+            <div class="education__time">
+                Осталось времени: {{ time }}c
+            </div>
+        </div>
+        <div class="education__area">
+            <input [(ngModel)]="userTranslate" type="text" />
+        </div>
+        <button [disabled]="userTranslate.length < currentWord.translate.length" (click)="userAnswer()">Ответить</button>
+        <p>
+            Попытка {{ attemptNumber }} из {{ wordCnt }}
+        </p>
+    </div>
+</ng-template>
+<div *ngIf="isDone" class="result">
+    <div class="result__title">Результат:</div>
+    <div class="result__row">Всего вопросов: {{ wordCnt }}</div>
+    <div class="result__row">Правильных ответов: {{ result.success }} </div>
+    <div class="result__row">Неправильных ответов: {{ result.error }} </div>
+
+    <div class="result__restart">
+        <button class="start-btn" (click)="startEducation()">Повторить</button>
+    </div>
+</div>
+

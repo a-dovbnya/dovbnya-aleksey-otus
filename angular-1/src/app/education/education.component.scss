@@ -1,0 +1,47 @@
+.start-btn {
+    width: 200px;
+    height: 60px;
+}
+
+.start-education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.education {
+    margin-top: 20px;
+    max-width: 500px;
+
+    &__word {
+        font-size: 22px;
+    }
+
+    &__area {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    &__panel {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.result {
+    margin-top: 25px;
+
+    &__title {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    &__row {
+        margin-bottom: 5px;
+    }
+
+    &__restart {
+        margin-top: 50px;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="settings">
+    <div class="settings__row">
+        <label for="wordQt">Количество слов в упражнении</label>
+        <input id="wordQt" type="number" [(ngModel)]="settings.wordInEx" />
+    </div>
+
+    <div class="settings__row">
+        <label for="workTime">Время упражнения (с)</label>
+        <input id="workTime" type="number" [(ngModel)]="settings.timeForEx" />
+    </div>
+    <div class="settings__row">
+        <button (click)="saveSettings()">Сохраниь</button>
+    </div>
+</div>
