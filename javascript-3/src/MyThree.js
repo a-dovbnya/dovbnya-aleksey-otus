@@ -1,4 +1,5 @@
 const ERROR_TEXT = 'This attribute tree is not valid'
+import demoTree from './tree.json'
 
 export default class MyTree extends HTMLElement {
 
@@ -35,7 +36,7 @@ export default class MyTree extends HTMLElement {
 
     setTree () {
         try {
-            this.tree = JSON.parse(this.getAttribute('tree'))
+            this.tree = demoTree
             this.error = null
             this.render()
         } catch {

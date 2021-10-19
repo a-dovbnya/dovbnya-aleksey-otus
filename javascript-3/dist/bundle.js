@@ -16,7 +16,7 @@
   \**********************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"../node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n    background: red;\\n}\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./style.css?../node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"../node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"../node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./style.css?../node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,13 +110,43 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./MyLeaf.js":
+/*!*******************!*\
+  !*** ./MyLeaf.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ MyLeaf)\n/* harmony export */ });\nclass MyLeaf extends HTMLElement {\n    connectedCallback() {\n        this.render()\n    }\n\n    render () {\n        const shadow = this.attachShadow({mode: 'open'});\n\t\tshadow.innerHTML = this.getAttribute('leaf');\n    }\n\n    static get observedAttributes () {\n        return ['text']\n    }\n\n    attributeChangedCallback() {\n        this.render()\n    }\n}\n\n\n//# sourceURL=webpack:///./MyLeaf.js?");
+
+/***/ }),
+
+/***/ "./MyThree.js":
+/*!********************!*\
+  !*** ./MyThree.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ MyTree)\n/* harmony export */ });\n/* harmony import */ var _tree_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tree.json */ \"./tree.json\");\nconst ERROR_TEXT = 'This attribute tree is not valid'\n;\n\nclass MyTree extends HTMLElement {\n\n    connectedCallback() {\n        this.setTree()\n    }\n\n    getMarkup (tree) {\n        if (!tree || !tree.id) {\n            this.error = true\n            return\n        }\n\n        const root = document.createElement('ul')\n        const item = document.createElement('li')\n        const leaf = document.createElement('my-leaf')\n\n        leaf.setAttribute('leaf', `ID: ${tree.id}`)\n        item.appendChild(leaf)\n        root.appendChild(item)\n\n        if (tree.items && Array.isArray(tree.items)) {\n            const itemsBox = document.createElement('div')\n\n            for (let i = 0; i < tree.items.length; i++) {\n                itemsBox.append(this.getMarkup(tree.items[i]))\n            }\n\n            item.appendChild(itemsBox)\n        }\n\n        return root\n    }\n\n    setTree () {\n        try {\n            this.tree = _tree_json__WEBPACK_IMPORTED_MODULE_0__\n            this.error = null\n            this.render()\n        } catch {\n            this.error = true\n        }\n    }\n\n    render () {\n        const shadow = this.attachShadow({mode: 'open'})\n        const markup = this.getMarkup(this.tree)\n\n        if (this.error) {\n            shadow.innerHTML = ERROR_TEXT;\n            return\n        }\n\n        shadow.innerHTML = ''\n        shadow.appendChild(markup)\n    }\n\n    static get observedAttributes () {\n        return ['tree']\n    }\n\n    attributeChangedCallback() {\n        this.setTree()\n    }\n}\n\n\n//# sourceURL=webpack:///./MyThree.js?");
+
+/***/ }),
+
 /***/ "./entry.js":
 /*!******************!*\
   !*** ./entry.js ***!
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./style.css\");\n\n\n//# sourceURL=webpack:///./entry.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./style.css\");\n/* harmony import */ var _MyThree__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyThree */ \"./MyThree.js\");\n/* harmony import */ var _MyLeaf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyLeaf */ \"./MyLeaf.js\");\n\n\n\n\nwindow.customElements.define(\"my-tree\", _MyThree__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\nwindow.customElements.define(\"my-leaf\", _MyLeaf__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n\n\n//# sourceURL=webpack:///./entry.js?");
+
+/***/ }),
+
+/***/ "./tree.json":
+/*!*******************!*\
+  !*** ./tree.json ***!
+  \*******************/
+/***/ ((module) => {
+
+eval("module.exports = JSON.parse('{\"id\":1,\"items\":[{\"id\":2,\"items\":[{\"id\":3}]}]}');\n\n//# sourceURL=webpack:///./tree.json?");
 
 /***/ })
 
