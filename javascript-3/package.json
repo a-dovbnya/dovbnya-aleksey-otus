@@ -1,0 +1,21 @@
+{
+  "name": "show-tree",
+  "version": "1.0.0",
+  "description": "Приложение для показа дерева",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn test",
+    "build": "yarn webpack",
+    "dev-server": "yarn webpack serve --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  }
+}
