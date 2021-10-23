@@ -1,0 +1,14 @@
+<div class="app">
+    <h1>English training</h1>
+    <mat-tab-group (selectedTabChange)="onTabChanged($event);">
+        <mat-tab label="Последние слова">
+            <app-word-list></app-word-list>
+        </mat-tab>
+        <mat-tab label="Упражнения">
+            <app-education  [activeTab]="activeTabIndex"></app-education>
+        </mat-tab>
+        <mat-tab label="Настройки">
+            <app-settings></app-settings>
+        </mat-tab>
+    </mat-tab-group>
+</div>
