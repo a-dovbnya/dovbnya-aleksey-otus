@@ -1,0 +1,24 @@
+<ul *ngIf="dictionary.length" class="word-list">
+    <li *ngFor="let item of dictionary" class="word-list__item">{{ item.word }} - {{ item.translate }}</li>
+</ul>
+
+<p>Введите слова или фразы через запятую</p>
+
+<p>{{ message }}</p>
+
+<div class="add-box">
+    <div *ngIf="!addWordMode; else addWordForm">
+        <button mat-raised-button color="primary" (click)="addWordMode = true">Добавить новое слово</button>
+    </div>
+    <ng-template #addWordForm>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Добавить слово</mat-label>
+            <input [(ngModel)]="newWordArea" matInput placeholder="word">
+        </mat-form-field>
+
+        <div class="add-box__row">
+            <button mat-raised-button color="primary" (click)="addWord()">Добавить</button>
+        </div>
+    </ng-template>
+</div>

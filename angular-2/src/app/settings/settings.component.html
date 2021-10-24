@@ -1,0 +1,18 @@
+<div class="settings">
+    <div class="settings__row">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Количество слов в упражнении</mat-label>
+            <input [(ngModel)]="settings.wordInEx" type="number" matInput>
+        </mat-form-field>
+    </div>
+
+    <div class="settings__row">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Время упражнения (с)</mat-label>
+            <input  [(ngModel)]="settings.timeForEx" type="number" matInput>
+        </mat-form-field>
+    </div>
+    <div class="settings__row">
+        <button mat-raised-button color="primary" (click)="saveSettings()">Сохраниь</button>
+    </div>
+</div>
