@@ -1,0 +1,29 @@
+.app {
+    margin: 50px auto;
+    max-width: 800px;
+    padding-top: 1px;
+
+    &__inner {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-bottom: 1px solid #dfdfdf;
+
+    &__link {
+        margin: 0 10px;
+        display: inline-block;
+    }
+}
