@@ -1,0 +1,17 @@
+export const INIT = 'INIT'
+export const AUTH_REQUEST = 'AUTH_REQUEST'
+export const FETCH_DATA = 'FETCH_DATA'
+
+export const ADD_CATEGORY = 'ADD_CATEGORY'
+export const UPDATE_CATEGORY = 'UPDATE_CATEGORY'
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'
+
+export const ADD_ACCOUNT = 'ADD_ACCOUNT'
+export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT'
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT'
+
+export const ADD_FINANCE = 'ADD_FINANCE'
+export const UPDATE_FINANCE = 'UPDATE_FINANCE'
+export const DELETE_FINANCE = 'DELETE_FINANCE'
+
+export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'

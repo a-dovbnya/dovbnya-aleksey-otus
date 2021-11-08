@@ -1,0 +1,5 @@
+export const SET_AUTH = 'SET_AUTH'
+export const SET_AUTH_FETCHING = 'SET_AUTH_FETCHING'
+export const SET_AUTH_ERROR = 'SET_AUTH_ERROR'
+export const TOGGLE_AUTH = 'TOGGLE_AUTH'
+export const LOGOUT = 'LOGOUT'
